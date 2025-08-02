@@ -10,9 +10,12 @@ public class arena {
         scoreSource.addScoreListener(subscriber2);
 
         Scanner scanner = new Scanner(System.in);
+        String score = scanner.nextLine();
         while(score != ""){
-            scoreSource.setScoreLine(scanner.nextLine());
+            scoreSource.setScoreLine(score);
             score = scanner.nextLine();
         }
+        scanner.close();
+        System.out.println("End of input");
     }
 }
