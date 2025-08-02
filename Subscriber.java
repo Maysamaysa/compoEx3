@@ -1,13 +1,15 @@
-public class Subscriber implements ScoreListener {
-    int ID;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
-    public Subscriber(int ID) {
-        this.ID = ID;
+public class Subscriber implements PropertyChangeListener {
+    private String name;
+
+    public Subscriber(String name) {
+        this.name = name;
     }
+
     @Override
-    public void ScoreChange(ScoreEvent event) {
-        // Handle the score update event
-        System.out.println("Live result to "+ ID +": " + event.getScoreLine());
+    public void propertyChange(PropertyChangeEvent evt) {
+        System.out.println("Live rusult to "+name+":" + evt.getNewValue());
     }
-    
 }

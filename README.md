@@ -1,1 +1,1 @@
-program to practice and to understanding the observer pattern design in java.
+program to practice and to understanding the Bound Properties in java.

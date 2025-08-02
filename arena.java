@@ -2,20 +2,28 @@ import java.util.Scanner;
 
 public class arena {
     public static void main(String[] args) {
-        Subscriber subscriber = new Subscriber(1);
-        Subscriber subscriber2 = new Subscriber(2);
+        LiveScoreBean scoreBean = new LiveScoreBean();
 
-        ScoreSource scoreSource = new ScoreSource();
-        scoreSource.addScoreListener(subscriber);
-        scoreSource.addScoreListener(subscriber2);
+        //2 subscribers
+        Subscriber sub1 = new Subscriber("Sub1");
+        Subscriber sub2 = new Subscriber("Sub2");
+
+        scoreBean.addPropertyChangeListener(sub1);
+        scoreBean.addPropertyChangeListener(sub2);
 
         Scanner scanner = new Scanner(System.in);
-        String score = scanner.nextLine();
-        while(score != ""){
-            scoreSource.setScoreLine(score);
-            score = scanner.nextLine();
+        System.out.println("Input :(enter to end)");
+
+        while (true) {
+            System.out.print("result : ");
+            String input = scanner.nextLine();
+            if (input.trim().isEmpty()) {
+                break;
+            }
+            scoreBean.setScoreLine(input);
         }
+
         scanner.close();
-        System.out.println("End of input");
+        System.out.println("End of match updates.");
     }
 }
